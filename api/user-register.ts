@@ -12,7 +12,12 @@ const handler: Handler = async (event, context) => {
   };
   // 非 POST 请求
   if (event.httpMethod !== "POST") {
-    result.body = JSON.stringify({ msg: "请使用 POST 方法请求" });
+    result.body = JSON.stringify({
+      code: 200,
+      msg: "请使用 POST 方法请求",
+      data: {},
+      map: {},
+    });
     return result;
   }
 

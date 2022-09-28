@@ -10,6 +10,17 @@ const handler: Handler = async (event, context) => {
       "Content-Type": "application/json",
     },
   };
+  // 非 POST 请求
+  if (event.httpMethod !== "POST") {
+    result.body = JSON.stringify({
+      code: 200,
+      msg: "请使用 POST 方法请求",
+      data: null,
+      mpa: {},
+    });
+    return result;
+  }
+
   const info: Info = JSON.parse(event.body) as Info;
   if (
     !info.username ||

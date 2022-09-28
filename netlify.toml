@@ -11,3 +11,8 @@
   from = "/user/register"
   to = "/.netlify/functions/user-register"
   status = 200
+
+[[redirects]]
+  from = "/user/upload"
+  to = "/.netlify/functions/time-upload"
+  status = 200
