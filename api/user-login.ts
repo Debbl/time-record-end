@@ -1,7 +1,7 @@
 import type { Response } from "@netlify/functions/dist/function/response";
-import { Handler } from "@netlify/functions";
+import type { Handler } from "@netlify/functions";
+import type { LoginInfo } from "../vika/user/register";
 import vikaLogin from "../vika/user/login";
-import { LoginInfo } from "../vika/user/register";
 
 const handler: Handler = async (event, context) => {
   const result: Response = {
