@@ -1,5 +1,5 @@
 import { Handler } from "@netlify/functions";
-import vikaLogin from "../../vika/user/login";
+import vikaLogin from "../vika/user/login";
 
 const handler: Handler = async (event, context) => {
   if (event.httpMethod === "POST") {

@@ -1,12 +1,8 @@
 [functions]
   directory = "api"
 
-[[redirects]]
-    from = "/*"
-    to = "/.netlify/functions/:splat"
-    status = 200
 
 [[redirects]]
   from = "/user/login"
-  to = "/.netlify/functions/user/login"
-  method = "POST"
+  to = "/.netlify/functions/login"
+  status = 200
