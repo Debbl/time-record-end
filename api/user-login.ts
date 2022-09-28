@@ -1,6 +1,7 @@
 import type { Response } from "@netlify/functions/dist/function/response";
 import { Handler } from "@netlify/functions";
 import vikaLogin from "../vika/user/login";
+import { LoginInfo } from "../vika/user/register";
 
 const handler: Handler = async (event, context) => {
   const result: Response = {
@@ -15,13 +16,7 @@ const handler: Handler = async (event, context) => {
     return result;
   }
 
-  const {
-    username,
-    password,
-  }: {
-    username: string;
-    password: string;
-  } = JSON.parse(event.body) || {};
+  const { username, password }: LoginInfo = JSON.parse(event.body) || {};
   // 没有传 username 和 password
   if (!username || !password) {
     result.body = JSON.stringify({
