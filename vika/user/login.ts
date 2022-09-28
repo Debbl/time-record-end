@@ -1,14 +1,10 @@
-import { Vika } from "@vikadata/vika";
-
-const vika = new Vika({ token: "uskwJCD2UzYxJ81qvxRfceO" });
+import vika from "../index";
 
 const vikaLogin = async () => {
-  const datasheet = vika.datasheet("dstf2Lur3r2D7Zpz0v");
+  const dataSheet = vika.datasheet("dstf2Lur3r2D7Zpz0v");
   // 分页获取记录，默认返回第一页
-  const responese = await datasheet.records.query({ viewId: "viw7TBlhXHt9t" });
-  return responese;
+  const response = await dataSheet.records.query({ viewId: "viw7TBlhXHt9t" });
+  return response;
 };
-
-vikaLogin();
 
 export default vikaLogin;

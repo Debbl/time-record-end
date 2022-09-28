@@ -4,5 +4,10 @@
 
 [[redirects]]
   from = "/user/login"
-  to = "/.netlify/functions/login"
+  to = "/.netlify/functions/user-login"
+  status = 200
+
+[[redirects]]
+  from = "/user/register"
+  to = "/.netlify/functions/user-register"
   status = 200
