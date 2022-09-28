@@ -15,31 +15,37 @@ const handler: Handler = async (event, context) => {
     return result;
   }
 
-  const response = await vikaLogin();
-  const { username, password } = JSON.parse(event.body) as {
+  const {
+    username,
+    password,
+  }: {
     username: string;
     password: string;
-  };
-  const records = response.data.records;
-  for (let i = 0; i < records.length; i++) {
-    const record = records[i];
-    if (
-      username === record.fields.username &&
-      password === record.fields.password
-    ) {
-      result.body = JSON.stringify({
-        code: 200,
-        msg: null,
-        data: {
-          username: username,
-          password: "",
-        },
-        map: {},
-      });
-      return result;
-    }
+  } = JSON.parse(event.body) || {};
+  // 没有传 username 和 password
+  if (!username || !password) {
+    result.body = JSON.stringify({
+      code: 200,
+      msg: "请传递 username 和 password",
+      data: {},
+      map: {},
+    });
+    return result;
   }
-
+  const response = await vikaLogin(username);
+  const record = response.data.records[0];
+  if (record.fields.password === password) {
+    result.body = JSON.stringify({
+      code: 200,
+      msg: null,
+      data: {
+        username: record.fields.username,
+        password: "",
+      },
+      map: {},
+    });
+    return result;
+  }
   result.body = JSON.stringify({
     code: 200,
     msg: "用户名或密码错误",

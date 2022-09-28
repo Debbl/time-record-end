@@ -45,11 +45,11 @@ const handler: Handler = async (event, context) => {
     return result;
   }
 
-  const records = response.data.records;
+  const record = response.data.records[0];
   result.body = JSON.stringify({
     code: 200,
     msg: null,
-    data: records[0].fields,
+    data: record.fields,
     map: {},
   });
   return result;
