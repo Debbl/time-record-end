@@ -15,10 +15,13 @@ const handler: Handler = async (event, context) => {
     return result;
   }
 
-  const { username, password } = JSON.parse(event.body) as {
+  const {
+    username,
+    password,
+  }: {
     username: string;
     password: string;
-  };
+  } = JSON.parse(event.body) || {};
   // 没有传 username 和 password
   if (!username || !password) {
     result.body = JSON.stringify({
