@@ -9,7 +9,7 @@ export interface Info extends IFieldValueMap {
   endTime: string;
 }
 
-const vikaLogin = async (info: Info) => {
+const vikaUpload = async (info: Info) => {
   return dataSheet.records.create([
     {
       fields: info,
@@ -17,4 +17,17 @@ const vikaLogin = async (info: Info) => {
   ]);
 };
 
-export default vikaLogin;
+// async function foo() {
+//   const response = await vikaUpload({
+//     username: "zhangsan4",
+//     time: "00:32:41",
+//     timeStamp: "3243223",
+//     startTime: "1662356259975",
+//     endTime: "1662358719350",
+//   });
+//   console.log(response);
+// }
+
+// foo();
+
+export default vikaUpload;
