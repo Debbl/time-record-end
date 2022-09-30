@@ -1,10 +1,7 @@
-import { getUserTime } from "./config";
+import { getTodayTimePart, getUserTime } from "./config";
 
 const vikaGetToday = async (username: string) => {
-  const todayStartTemp = new Date(new Date().setHours(0, 0, 0, 0)).getTime();
-  const todayEndTemp = new Date(
-    new Date().setHours(0, 0, 0, 0) + 24 * 60 * 60 * 1000 - 1,
-  ).getTime();
+  const [todayStartTemp, todayEndTemp] = getTodayTimePart();
   const response = await getUserTime(username, todayStartTemp, todayEndTemp);
   // for (const item of response.data.records)
   //   console.log(item);

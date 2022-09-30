@@ -26,3 +26,8 @@
   from = "/time/getWeek"
   to = "/.netlify/functions/time-get-week"
   status = 200
+
+[[redirects]]
+  from = "time/getAllUserWeekTime"
+  to = "/.netlify/functions/time-get-all-user-week-time"
+  status = 200
