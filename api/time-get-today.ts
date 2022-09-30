@@ -1,14 +1,9 @@
-import type { Response } from "@netlify/functions/dist/function/response";
 import type { Handler } from "@netlify/functions";
 import vikaGetToday from "../vika/time/getToday";
+import { getResult } from "../vika/config";
 
 const handler: Handler = async (event) => {
-  const result: Response = {
-    statusCode: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+  const result = getResult();
   // 非 GET 请求
   if (event.httpMethod !== "GET") {
     result.body = JSON.stringify({

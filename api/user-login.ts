@@ -1,15 +1,10 @@
-import type { Response } from "@netlify/functions/dist/function/response";
 import type { Handler } from "@netlify/functions";
 import type { LoginInfo } from "../vika/user/register";
 import vikaLogin from "../vika/user/login";
+import { getResult } from "../vika/config";
 
 const handler: Handler = async (event) => {
-  const result: Response = {
-    statusCode: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+  const result = getResult();
   // 非 POST 请求
   if (event.httpMethod !== "POST") {
     result.body = JSON.stringify({
