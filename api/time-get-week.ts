@@ -1,5 +1,5 @@
 import type { Handler } from "@netlify/functions";
-import { getResult } from "../vika/config";
+import { getFormatTime, getResult } from "../vika/config";
 import vikaGetWeek from "../vika/time/getWeek";
 
 const handler: Handler = async (event) => {
@@ -29,22 +29,14 @@ const handler: Handler = async (event) => {
   const response = await vikaGetWeek(username);
   if (response.success) {
     let totalTimeStamp = 0;
-    const timeArr = ["00", "00", "00"];
     for (const record of response.data.records)
       totalTimeStamp += Number(record.fields.timeStamp);
-
-    let totalTimeStampTemp = totalTimeStamp / 1000;
-    let flag = 2;
-    while (totalTimeStampTemp > 0) {
-      timeArr[flag--] = String(totalTimeStampTemp % 60);
-      totalTimeStampTemp = Math.floor(totalTimeStampTemp / 60);
-    }
     result.body = JSON.stringify({
       code: 200,
-      msg: "请传递 username",
+      msg: null,
       data: {
         username,
-        time: timeArr.join(":"),
+        time: getFormatTime(totalTimeStamp),
         totalTimeStamp,
       },
       map: {},

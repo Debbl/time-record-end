@@ -13,6 +13,17 @@ const getResult = (): Response => ({
   },
 });
 
+const getFormatTime = (totalTimeStamp: number) => {
+  const timeArr = ["00", "00", "00"];
+  let totalTimeStampTemp = Math.floor(totalTimeStamp / 1000);
+  let flag = 2;
+  while (totalTimeStampTemp > 0) {
+    timeArr[flag--] = String(Math.floor(totalTimeStampTemp % 60)).padStart(2, "0");
+    totalTimeStampTemp = Math.floor(totalTimeStampTemp / 60);
+  }
+  return timeArr.join(":");
+};
+
 const getFormatUserTime = (records: IRecord[]) => {
   const map = new Map<IFieldValue, number>();
   for (const record of records) {
@@ -22,20 +33,38 @@ const getFormatUserTime = (records: IRecord[]) => {
   }
   const data = [];
   for (const [key, value] of map) {
-    const timeArr = ["00", "00", "00"];
-    let totalTimeStampTemp = value / 1000;
-    let flag = 2;
-    while (totalTimeStampTemp > 0) {
-      timeArr[flag--] = String(totalTimeStampTemp % 60);
-      totalTimeStampTemp = Math.floor(totalTimeStampTemp / 60);
-    }
     data.push({
       username: key,
-      time: timeArr.join(":"),
+      time: getFormatTime(value),
       totalTimeStampTemp: value,
     });
   }
   return data;
 };
 
-export { vika, getResult, getFormatUserTime };
+// console.log(getFormatUserTime([
+//   {
+//     recordId: "1",
+//     fields: {
+//       totalTimeStamp: "111000",
+//       username: "1",
+//     },
+//   },
+//   {
+//     recordId: "2",
+//     fields: {
+//       totalTimeStamp: "112000",
+//       username: "1",
+//     },
+//   },
+//   {
+//     recordId: "1",
+//     fields: {
+//       totalTimeStamp: "113000",
+//       username: "2",
+//     },
+//   },
+// ]),
+// );
+
+export { vika, getResult, getFormatTime, getFormatUserTime };
