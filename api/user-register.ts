@@ -3,7 +3,7 @@ import type { Handler } from "@netlify/functions";
 import type { LoginInfo } from "../vika/user/register";
 import vikaRegister from "../vika/user/register";
 
-const handler: Handler = async (event, context) => {
+const handler: Handler = async (event) => {
   const result: Response = {
     statusCode: 200,
     headers: {

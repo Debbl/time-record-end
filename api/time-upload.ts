@@ -3,7 +3,7 @@ import type { Handler } from "@netlify/functions";
 import type { Info } from "../vika/time/upload";
 import vikaUpload from "../vika/time/upload";
 
-const handler: Handler = async (event, context) => {
+const handler: Handler = async (event) => {
   const result: Response = {
     statusCode: 200,
     headers: {
@@ -23,11 +23,11 @@ const handler: Handler = async (event, context) => {
 
   const info: Info = JSON.parse(event.body) as Info;
   if (
-    !info.username ||
-    !info.startTime ||
-    !info.endTime ||
-    !info.time ||
-    !info.timeStamp
+    !info.username
+    || !info.startTime
+    || !info.endTime
+    || !info.time
+    || !info.timeStamp
   ) {
     result.body = JSON.stringify({
       code: 200,
