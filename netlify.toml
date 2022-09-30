@@ -16,3 +16,13 @@
   from = "/time/upload"
   to = "/.netlify/functions/time-upload"
   status = 200
+
+[[redirects]]
+  from = "/time/getToday"
+  to = "/.netlify/functions/time-get-today"
+  status = 200
+
+[[redirects]]
+  from = "/time/getWeek"
+  to = "/.netlify/functions/time-get-week"
+  status = 200
