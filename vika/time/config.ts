@@ -3,11 +3,11 @@ import { vika } from "../config";
 const dataSheet = vika.datasheet("dstnxBkVTZyTNu5m40");
 
 const getTodayTimePart = () => {
-  const todayStartTemp = new Date(new Date().setHours(0, 0, 0, 0)).getTime();
-  const todayEndTemp = new Date(
+  const todayStartStamp = new Date(new Date().setHours(0, 0, 0, 0)).getTime();
+  const todayEndStamp = new Date(
     new Date().setHours(0, 0, 0, 0) + 24 * 60 * 60 * 1000 - 1,
   ).getTime();
-  return [todayStartTemp, todayEndTemp];
+  return [todayStartStamp, todayEndStamp];
 };
 
 const getWeekTimePart = () => {
@@ -16,17 +16,37 @@ const getWeekTimePart = () => {
   const nowDay = now.getDate(); // 当前日
   const nowMonth = now.getMonth(); // 当前月
   const nowYear = now.getFullYear(); // 当前年
-  const weekStartTemp = new Date(
+  const weekStartStamp = new Date(
     nowYear,
     nowMonth,
     nowDay - nowDayOfWeek + 1,
   ).getTime();
-  const weekEndTemp = new Date(
+  const weekEndStamp = new Date(
     nowYear,
     nowMonth,
     nowDay + (7 - nowDayOfWeek),
   ).getTime();
-  return [weekStartTemp, weekEndTemp];
+  return [weekStartStamp, weekEndStamp];
+};
+
+const getMonthTimePart = () => {
+  const now = new Date(); // 当前日期
+  const nowMonth = now.getMonth(); // 当前月
+  const nowYear = now.getFullYear(); // 当前年
+  // 获得某月的天数
+  function getMonthDays(month) {
+    const monthStartDate = new Date(nowYear, month, 1).getTime();
+    const monthEndDate = new Date(nowYear, month + 1, 1).getTime();
+    const days = (monthEndDate - monthStartDate) / (1000 * 60 * 60 * 24);
+    return days;
+  }
+  const monthStartStamp = new Date(nowYear, nowMonth, 1).getTime();
+  const monthEndStamp = new Date(
+    nowYear,
+    nowMonth,
+    getMonthDays(nowMonth),
+  ).getTime();
+  return [monthStartStamp, monthEndStamp];
 };
 
 const getUserTime = async (
@@ -54,4 +74,11 @@ const getTime = async (startTime: number, endTime: number) => {
   return response;
 };
 
-export { dataSheet, getTodayTimePart, getWeekTimePart, getUserTime, getTime };
+export {
+  dataSheet,
+  getTodayTimePart,
+  getWeekTimePart,
+  getMonthTimePart,
+  getUserTime,
+  getTime,
+};

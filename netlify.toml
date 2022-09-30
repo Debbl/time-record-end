@@ -31,3 +31,8 @@
   from = "time/getAllUserWeekTime"
   to = "/.netlify/functions/time-get-all-user-week-time"
   status = 200
+
+[[redirects]]
+  from = "time/getAllUserMonthTime"
+  to = "/.netlify/functions/time-get-all-user-month-time"
+  status = 200

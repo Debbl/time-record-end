@@ -1,6 +1,6 @@
 import type { Handler } from "@netlify/functions";
 import { getFormatUserTime, getResult } from "../vika/config";
-import vikaGetAllUserWeekTime from "../vika/time/getAllUserWeekTime";
+import vikaGetAllUserMonthTime from "../vika/time/getAllUserMonthTime copy";
 
 const handler: Handler = async (event) => {
   const result = getResult();
@@ -15,7 +15,7 @@ const handler: Handler = async (event) => {
     return result;
   }
 
-  const response = await vikaGetAllUserWeekTime();
+  const response = await vikaGetAllUserMonthTime();
   if (response.success) {
     const data = getFormatUserTime(response.data.records);
     result.body = JSON.stringify({
