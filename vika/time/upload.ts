@@ -22,8 +22,8 @@ const vikaUpload = async (info: Info) => {
 //     username: "zhangsan4",
 //     time: "00:32:41",
 //     timeStamp: "3243223",
-//     startTime: "1662356259975",
-//     endTime: "1662358719350",
+//     startTime: "1664518728959",
+//     endTime: "1664518728960",
 //   });
 //   console.log(response);
 // }
