@@ -28,7 +28,7 @@ const getFormatUserTime = (records: IRecord[]) => {
   const map = new Map<IFieldValue, number>();
   for (const record of records) {
     const username = record.fields.username;
-    const stamp = record.fields.totalTimeStamp;
+    const stamp = record.fields.timeStamp;
     map.set(username, (map.get(username) || 0) + Number(stamp));
   }
   const data = [];
@@ -42,29 +42,15 @@ const getFormatUserTime = (records: IRecord[]) => {
   return data;
 };
 
-// console.log(getFormatUserTime([
-//   {
-//     recordId: "1",
-//     fields: {
-//       totalTimeStamp: "111000",
-//       username: "1",
-//     },
-//   },
-//   {
-//     recordId: "2",
-//     fields: {
-//       totalTimeStamp: "112000",
-//       username: "1",
-//     },
-//   },
-//   {
-//     recordId: "1",
-//     fields: {
-//       totalTimeStamp: "113000",
-//       username: "2",
-//     },
-//   },
-// ]),
-// );
+console.log(getFormatUserTime([
+  {
+    recordId: "1",
+    fields: {
+      totalTimeStamp: "111000",
+      username: "1",
+    },
+  },
+]),
+);
 
 export { vika, getResult, getFormatTime, getFormatUserTime };
