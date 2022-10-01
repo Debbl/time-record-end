@@ -23,6 +23,11 @@
   status = 200
 
 [[redirects]]
+  from = "time/getUserToday"
+  to = "/.netlify/functions/time-get-user-today"
+  status = 200
+
+[[redirects]]
   from = "/time/getWeek"
   to = "/.netlify/functions/time-get-week"
   status = 200
