@@ -30,7 +30,7 @@ const handler: Handler = async (event) => {
 
   const response = await vikaGetWeek(username);
   if (response.success) {
-    const timeArr = new Array({ length: 7 }).map((_, i) => [i + 1, ...getEveryWeekTimePart(i + 1)]);
+    const timeArr = Array.from({ length: 7 }).map((_, i) => [i + 1, ...getEveryWeekTimePart(i + 1)]);
     const map = new Map<number, IFieldValueMap[]>();
     for (let i = 0; i < response.data.records.length; i++) {
       const timeStamp = response.data.records[i].fields.startTime;

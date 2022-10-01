@@ -42,15 +42,4 @@ const getFormatUserTime = (records: IRecord[]) => {
   return data;
 };
 
-console.log(getFormatUserTime([
-  {
-    recordId: "1",
-    fields: {
-      totalTimeStamp: "111000",
-      username: "1",
-    },
-  },
-]),
-);
-
 export { vika, getResult, getFormatTime, getFormatUserTime };
