@@ -29,6 +29,22 @@ const getWeekTimePart = () => {
   return [weekStartStamp, weekEndStamp];
 };
 
+const getEveryWeekTimePart = (step: number) => {
+  const now = new Date(); // 当前日期
+  const nowDayOfWeek = now.getDay(); // 今天本周的第几天
+  const nowDay = now.getDate(); // 当前日
+  const nowMonth = now.getMonth(); // 当前月
+  const nowYear = now.getFullYear(); // 当前年
+  let weekStartStamp = new Date(
+    nowYear,
+    nowMonth,
+    nowDay - nowDayOfWeek + 1,
+  ).getTime();
+  weekStartStamp = weekStartStamp + (step - 1) * 24 * 60 * 60 * 1000;
+  const weekEndStamp = weekStartStamp + 24 * 60 * 60 * 1000;
+  return [weekStartStamp, weekEndStamp];
+};
+
 const getMonthTimePart = () => {
   const now = new Date(); // 当前日期
   const nowMonth = now.getMonth(); // 当前月
@@ -76,6 +92,7 @@ const getTime = async (startTime: number, endTime: number) => {
 
 export {
   dataSheet,
+  getEveryWeekTimePart,
   getTodayTimePart,
   getWeekTimePart,
   getMonthTimePart,
