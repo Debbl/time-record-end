@@ -1,67 +1,30 @@
 import { vika } from "../config";
+import m from "../../utils/m";
 
 const dataSheet = vika.datasheet("dstnxBkVTZyTNu5m40");
 
 const getTodayTimePart = () => {
-  const todayStartStamp = new Date(new Date().setHours(0, 0, 0, 0)).getTime();
-  const todayEndStamp = new Date(
-    new Date().setHours(0, 0, 0, 0) + 24 * 60 * 60 * 1000 - 1,
-  ).getTime();
+  const todayStartStamp = m().startOf("day").valueOf();
+  const todayEndStamp = m().endOf("day").valueOf();
   return [todayStartStamp, todayEndStamp];
 };
 
 const getWeekTimePart = () => {
-  const now = new Date(); // 当前日期
-  const nowDayOfWeek = now.getDay(); // 今天本周的第几天
-  const nowDay = now.getDate(); // 当前日
-  const nowMonth = now.getMonth(); // 当前月
-  const nowYear = now.getFullYear(); // 当前年
-  const weekStartStamp = new Date(
-    nowYear,
-    nowMonth,
-    nowDay - nowDayOfWeek + 1,
-  ).getTime();
-  const weekEndStamp = new Date(
-    nowYear,
-    nowMonth,
-    nowDay + (7 - nowDayOfWeek),
-  ).getTime();
+  const weekStartStamp = m().startOf("week").valueOf();
+  const weekEndStamp = m().endOf("week").valueOf();
   return [weekStartStamp, weekEndStamp];
 };
 
 const getEveryWeekTimePart = (step: number) => {
-  const now = new Date(); // 当前日期
-  const nowDayOfWeek = now.getDay(); // 今天本周的第几天
-  const nowDay = now.getDate(); // 当前日
-  const nowMonth = now.getMonth(); // 当前月
-  const nowYear = now.getFullYear(); // 当前年
-  let weekStartStamp = new Date(
-    nowYear,
-    nowMonth,
-    nowDay - nowDayOfWeek + 1,
-  ).getTime();
-  weekStartStamp = weekStartStamp + (step - 1) * 24 * 60 * 60 * 1000;
-  const weekEndStamp = weekStartStamp + 24 * 60 * 60 * 1000;
+  const day = m().startOf("week").add(step, "day");
+  const weekStartStamp = day.valueOf();
+  const weekEndStamp = day.endOf("day").valueOf();
   return [weekStartStamp, weekEndStamp];
 };
 
 const getMonthTimePart = () => {
-  const now = new Date(); // 当前日期
-  const nowMonth = now.getMonth(); // 当前月
-  const nowYear = now.getFullYear(); // 当前年
-  // 获得某月的天数
-  function getMonthDays(month) {
-    const monthStartDate = new Date(nowYear, month, 1).getTime();
-    const monthEndDate = new Date(nowYear, month + 1, 1).getTime();
-    const days = (monthEndDate - monthStartDate) / (1000 * 60 * 60 * 24);
-    return days;
-  }
-  const monthStartStamp = new Date(nowYear, nowMonth, 1).getTime();
-  const monthEndStamp = new Date(
-    nowYear,
-    nowMonth,
-    getMonthDays(nowMonth),
-  ).getTime();
+  const monthStartStamp = m().startOf("month").valueOf();
+  const monthEndStamp = m().endOf("month").valueOf();
   return [monthStartStamp, monthEndStamp];
 };
 
