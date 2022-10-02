@@ -1,8 +1,11 @@
 import moment from "moment";
 
-moment.locale("zh-cn");
-
-console.log(moment().startOf("month"));
-console.log(moment().endOf("month"));
+moment.updateLocale("zh-cn", {
+  week: {
+    dow: 1,
+  },
+});
+console.log(moment().startOf("week"));
+console.log(moment().endOf("week"));
 
 export default moment;

@@ -1,5 +1,9 @@
 import moment from "moment";
 
-moment.locale("zh-cn");
+moment.updateLocale("zh-cn", {
+  week: {
+    dow: 1,
+  },
+});
 
 export default moment;
