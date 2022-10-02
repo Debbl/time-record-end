@@ -2,7 +2,8 @@ import type { IFieldValue, IRecord } from "@vikadata/vika";
 import { Vika } from "@vikadata/vika";
 import type { Response } from "@netlify/functions/dist/function/response";
 
-const vika = new Vika({ token: "uskwJCD2UzYxJ81qvxRfceO" });
+const vika = new Vika({ token: process.env.VIKA_TOKEN });
+
 const getResult = (): Response => ({
   statusCode: 200,
   headers: {
