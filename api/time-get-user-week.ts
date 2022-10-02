@@ -51,6 +51,13 @@ const handler: Handler = async (event) => {
         totalTimeStamp,
       };
     }
+    result.body = JSON.stringify({
+      code: 200,
+      msg: null,
+      data,
+      map: {},
+    });
+    return result;
   }
 
   result.body = JSON.stringify({
