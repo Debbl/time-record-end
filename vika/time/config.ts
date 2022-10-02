@@ -22,6 +22,13 @@ const getEveryWeekTimePart = (step: number) => {
   return [weekStartStamp, weekEndStamp];
 };
 
+const getEveryHoursTimePart = (step: number) => {
+  const day = m().startOf("day").add(step * 2, "hour");
+  const hoursStartStamp = day.valueOf();
+  const hoursEndStamp = day.add(2, "hour").subtract(1, "second").valueOf();
+  return [hoursStartStamp, hoursEndStamp];
+};
+
 const getMonthTimePart = () => {
   const monthStartStamp = m().startOf("month").valueOf();
   const monthEndStamp = m().endOf("month").valueOf();
@@ -60,5 +67,6 @@ export {
   getWeekTimePart,
   getMonthTimePart,
   getUserTime,
+  getEveryHoursTimePart,
   getTime,
 };

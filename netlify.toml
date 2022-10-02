@@ -28,6 +28,11 @@
   status = 200
 
 [[redirects]]
+  from = "time/getUserTodayInterval"
+  to = "/.netlify/functions/time-get-user-today-interval"
+  status = 200
+
+[[redirects]]
   from = "/time/getWeek"
   to = "/.netlify/functions/time-get-week"
   status = 200

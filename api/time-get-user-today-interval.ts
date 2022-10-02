@@ -1,8 +1,8 @@
 import type { Handler } from "@netlify/functions";
 import type { IFieldValue, IFieldValueMap } from "@vikadata/vika";
 import { getFormatTime, getResult } from "../vika/config";
-import { getEveryWeekTimePart } from "../vika/time/config";
-import vikaGetWeek from "../vika/time/getWeek";
+import { getEveryHoursTimePart } from "../vika/time/config";
+import vikaGetToday from "../vika/time/getToday";
 
 const handler: Handler = async (event) => {
   const result = getResult();
@@ -28,9 +28,9 @@ const handler: Handler = async (event) => {
     return result;
   }
 
-  const response = await vikaGetWeek(username);
+  const response = await vikaGetToday(username);
   if (response.success) {
-    const timeArr = Array.from({ length: 7 }).map((_, i) => [i + 1, ...getEveryWeekTimePart(i)]);
+    const timeArr = Array.from({ length: 12 }).map((_, i) => [i, ...getEveryHoursTimePart(i)]);
     const map = new Map<number, IFieldValueMap[]>();
     for (let i = 0; i < response.data.records.length; i++) {
       const timeStamp = response.data.records[i].fields.startTime;
@@ -51,7 +51,7 @@ const handler: Handler = async (event) => {
         totalTimeStamp,
       };
     }
-    const data = Array.from({ length: 7 }).map((_, i) => dataMap[i + 1] || {});
+    const data = Array.from({ length: 12 }).map((_, i) => dataMap[i] || {});
     result.body = JSON.stringify({
       code: 200,
       msg: null,
