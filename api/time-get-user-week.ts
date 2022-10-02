@@ -30,13 +30,15 @@ const handler: Handler = async (event) => {
 
   const response = await vikaGetWeek(username);
   if (response.success) {
-    const timeArr = Array.from({ length: 7 }).map((_, i) => [i + 1, ...getEveryWeekTimePart(i + 1)]);
+    const timeArr = Array.from({ length: 7 }).map((_, i) => [i + 1, ...getEveryWeekTimePart(i)]);
     const map = new Map<number, IFieldValueMap[]>();
     for (let i = 0; i < response.data.records.length; i++) {
       const timeStamp = response.data.records[i].fields.startTime;
       const weekTime = timeArr.find(time => time[1] < timeStamp && time[2] > timeStamp);
-      if (!map.has(weekTime[0])) map.set(weekTime[0], []);
-      map.get(weekTime[0]).push(response.data.records[i].fields);
+      if (weekTime) {
+        if (!map.has(weekTime[0])) map.set(weekTime[0], []);
+        map.get(weekTime[0]).push(response.data.records[i].fields);
+      }
     }
     const data: Record<number, { username: IFieldValue; time: string; totalTimeStamp: number }> = {};
     for (const [key, value] of map) {
@@ -49,13 +51,6 @@ const handler: Handler = async (event) => {
         totalTimeStamp,
       };
     }
-    result.body = JSON.stringify({
-      code: 200,
-      msg: null,
-      data,
-      map: {},
-    });
-    return result;
   }
 
   result.body = JSON.stringify({
