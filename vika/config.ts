@@ -32,7 +32,7 @@ const getFormatUserTime = (records: IRecord[]) => {
     const stamp = record.fields.timeStamp;
     map.set(username, (map.get(username) || 0) + Number(stamp));
   }
-  const data = [];
+  const data: { username: IFieldValue; time: string; totalTimeStampTemp: number }[] = [];
   for (const [key, value] of map) {
     data.push({
       username: key,

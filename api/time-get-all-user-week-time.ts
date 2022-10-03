@@ -18,6 +18,7 @@ const handler: Handler = async (event) => {
   const response = await vikaGetAllUserWeekTime();
   if (response.success) {
     const data = getFormatUserTime(response.data.records);
+    data.sort((a, b) => b.totalTimeStampTemp - a.totalTimeStampTemp);
     result.body = JSON.stringify({
       code: 200,
       msg: null,

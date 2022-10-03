@@ -1,6 +1,6 @@
 import type { Handler } from "@netlify/functions";
 import type { IFieldValue, IFieldValueMap } from "@vikadata/vika";
-import { getFormatTime, getResult } from "../vika/config";
+import { getResult } from "../vika/config";
 import { getEveryHoursTimePart } from "../vika/time/config";
 import vikaGetToday from "../vika/time/getToday";
 
@@ -47,7 +47,7 @@ const handler: Handler = async (event) => {
         totalTimeStamp += Number(field.timeStamp);
       dataMap[key] = {
         username,
-        time: getFormatTime(totalTimeStamp),
+        time: String(Math.floor(Math.floor(totalTimeStamp / 1000) / 60)),
         totalTimeStamp,
       };
     }
