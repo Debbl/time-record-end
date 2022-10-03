@@ -12,7 +12,8 @@
   "dependencies": {
     "@netlify/functions": "^1.2.0",
     "@vikadata/vika": "^1.0.7",
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.37"
   },
   "devDependencies": {
     "@debbl/eslint-config-ts": "^0.0.10",

@@ -1,10 +1,10 @@
-import * as moment from "moment";
-import "moment/dist/locale/zh-cn";
-
+import moment from "moment-timezone";
 moment.updateLocale("zh-cn", {
   week: {
     dow: 1,
   },
 });
+
+moment.tz.setDefault("Asia/Shanghai");
 
 export default moment;
