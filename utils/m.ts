@@ -1,6 +1,6 @@
 import moment from "moment";
 
-moment.updateLocale("zh-cn", {
+moment.updateLocale("zh-CN", {
   week: {
     dow: 1,
   },
