@@ -49,7 +49,7 @@ const handler: Handler = async (event) => {
         username,
         time: String(Math.floor(Math.floor(totalTimeStamp / 1000) / 60)),
         totalTimeStamp,
-        startTimeStamp: value[0].startTimeStamp,
+        startTimeStamp: value[0].startTime,
       };
     }
     const data = Array.from({ length: 12 }).map((_, i) => dataMap[i] || {});
