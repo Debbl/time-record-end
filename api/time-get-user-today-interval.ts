@@ -40,7 +40,7 @@ const handler: Handler = async (event) => {
         map.get(weekTime[0]).push(response.data.records[i].fields);
       }
     }
-    const dataMap: Record<number, { timeArr: number[][]; username: IFieldValue; time: string; totalTimeStamp: number; startTimeStamp: any }> = {};
+    const dataMap: Record<number, { username: IFieldValue; time: string; totalTimeStamp: number }> = {};
     for (const [key, value] of map) {
       let totalTimeStamp = 0;
       for (const field of value)
@@ -49,8 +49,6 @@ const handler: Handler = async (event) => {
         username,
         time: String(Math.floor(Math.floor(totalTimeStamp / 1000) / 60)),
         totalTimeStamp,
-        timeArr,
-        startTimeStamp: value[0].startTime,
       };
     }
     const data = Array.from({ length: 12 }).map((_, i) => dataMap[i] || {});
