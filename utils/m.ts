@@ -1,5 +1,5 @@
 import * as moment from "moment";
-import "moment/locale/zh-cn";
+import "moment/dist/locale/zh-cn";
 
 moment.updateLocale("zh-cn", {
   week: {
