@@ -40,7 +40,7 @@ const handler: Handler = async (event) => {
     return result;
   }
 
-  if (response.success) {
+  if (response.success && response.data.records.length !== 0) {
     const record = response.data.records[0];
     result.body = JSON.stringify({
       code: 200,

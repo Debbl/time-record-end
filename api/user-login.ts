@@ -28,7 +28,7 @@ const handler: Handler = async (event) => {
     return result;
   }
   const response = await vikaLogin(username);
-  if (response.success) {
+  if (response.success && response.data.records.length !== 0) {
     const record = response.data.records[0];
     if (record.fields.password === password) {
       result.body = JSON.stringify({
