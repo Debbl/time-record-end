@@ -1,6 +1,6 @@
 import type { Handler } from "@netlify/functions";
-import { getFormatTime, getResult } from "../vika/config";
-import vikaGetWeek from "../vika/time/getWeek";
+import { getFormatUserTime, getResult } from "../vika/config";
+import vikaGetAllUserWeekTime from "../vika/time/getAllUserWeekTime";
 
 const handler: Handler = async (event) => {
   const result = getResult();
@@ -26,19 +26,19 @@ const handler: Handler = async (event) => {
     return result;
   }
 
-  const response = await vikaGetWeek(username);
+  const response = await vikaGetAllUserWeekTime();
   if (response.success) {
-    let totalTimeStamp = 0;
-    for (const record of response.data.records)
-      totalTimeStamp += Number(record.fields.timeStamp);
+    const dataArr = getFormatUserTime(response.data.records);
+    dataArr.sort((a, b) => b.totalTimeStampTemp - a.totalTimeStampTemp);
+    const index = dataArr.findIndex(item => item.username === username);
     result.body = JSON.stringify({
       code: 200,
       msg: null,
       data: {
-        username,
-        time: getFormatTime(totalTimeStamp),
-        totalTimeStamp,
+        ...dataArr[index],
+        rank: index + 1,
       },
+      rank: 0,
       map: {},
     });
     return result;
