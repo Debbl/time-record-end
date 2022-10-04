@@ -28,18 +28,20 @@ const handler: Handler = async (event) => {
     return result;
   }
   const response = await vikaLogin(username);
-  const record = response.data.records[0];
-  if (record.fields.password === password) {
-    result.body = JSON.stringify({
-      code: 200,
-      msg: null,
-      data: {
-        username: record.fields.username,
-        password: "",
-      },
-      map: {},
-    });
-    return result;
+  if (response.success) {
+    const record = response.data.records[0];
+    if (record.fields.password === password) {
+      result.body = JSON.stringify({
+        code: 200,
+        msg: null,
+        data: {
+          username: record.fields.username,
+          password: "",
+        },
+        map: {},
+      });
+      return result;
+    }
   }
   result.body = JSON.stringify({
     code: 200,

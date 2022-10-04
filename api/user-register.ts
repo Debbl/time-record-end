@@ -40,11 +40,21 @@ const handler: Handler = async (event) => {
     return result;
   }
 
-  const record = response.data.records[0];
+  if (response.success) {
+    const record = response.data.records[0];
+    result.body = JSON.stringify({
+      code: 200,
+      msg: null,
+      data: record.fields,
+      map: {},
+    });
+    return result;
+  }
+
   result.body = JSON.stringify({
-    code: 200,
-    msg: null,
-    data: record.fields,
+    code: 500,
+    msg: "未知错误",
+    data: {},
     map: {},
   });
   return result;
