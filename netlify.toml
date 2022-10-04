@@ -2,15 +2,7 @@
   directory = "api"
 
 [[headers]]
-  for = "/user/*"
-  [headers.values]
-    Content-Type = "application/json",
-    Access-Control-Allow-Origin = "*",
-    Access-Control-Allow-Headers = "*",
-    Access-Control-Allow-Methods = "*",
-
-[[headers]]
-  for = "/time/*"
+  for = "/*"
   [headers.values]
     Content-Type = "application/json",
     Access-Control-Allow-Origin = "*",
