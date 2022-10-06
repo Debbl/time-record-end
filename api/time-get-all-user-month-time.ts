@@ -1,6 +1,6 @@
 import type { Handler } from "@netlify/functions";
 import { getFormatUserTime, getResult } from "../vika/config";
-import vikaGetAllUserMonthTime from "../vika/time/getAllUserMonthTime copy";
+import vikaGetAllUserMonthTime from "../vika/time/getAllUserMonthTime";
 
 const handler: Handler = async (event) => {
   const result = getResult();
