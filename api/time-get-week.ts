@@ -41,7 +41,7 @@ const handler: Handler = async (event) => {
         username,
         time: "00:00:00",
         totalTimeStampTemp: 0,
-        rank: dataArr.length,
+        rank: dataArr.length + 1,
       };
     }
     result.body = JSON.stringify({
