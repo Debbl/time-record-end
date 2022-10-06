@@ -31,13 +31,23 @@ const handler: Handler = async (event) => {
     const dataArr = getFormatUserTime(response.data.records);
     dataArr.sort((a, b) => b.totalTimeStampTemp - a.totalTimeStampTemp);
     const index = dataArr.findIndex(item => item.username === username);
+    let data = {};
+    data = {
+      ...dataArr[index],
+      rank: index + 1,
+    };
+    if (index === -1) {
+      data = {
+        username,
+        time: "00:00:00",
+        totalTimeStampTemp: 0,
+        rank: dataArr.length,
+      };
+    }
     result.body = JSON.stringify({
       code: 200,
       msg: null,
-      data: {
-        ...dataArr[index],
-        rank: index + 1,
-      },
+      data,
       rank: 0,
       map: {},
     });
