@@ -2,11 +2,11 @@ import type { IFieldValueMap } from "@vikadata/vika";
 import { dataSheet } from "./config";
 
 export interface Info extends IFieldValueMap {
-  username: string
-  time: string
-  timeStamp: string
-  startTime: string
-  endTime: string
+  username: string;
+  time: string;
+  timeStamp: string;
+  startTime: string;
+  endTime: string;
 }
 
 const vikaUpload = async (info: Info) => {

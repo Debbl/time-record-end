@@ -23,7 +23,9 @@ const getEveryWeekTimePart = (step: number) => {
 };
 
 const getEveryHoursTimePart = (step: number) => {
-  const day = m().startOf("day").add(step * 2, "hour");
+  const day = m()
+    .startOf("day")
+    .add(step * 2, "hour");
   const hoursStartStamp = day.valueOf();
   const hoursEndStamp = day.add(2, "hour").subtract(1, "second").valueOf();
   return [hoursStartStamp, hoursEndStamp];
@@ -38,7 +40,7 @@ const getMonthTimePart = () => {
 const getUserTime = async (
   username: string,
   startTime: number,
-  endTime: number,
+  endTime: number
 ) => {
   const response = await dataSheet.records.query({
     filterByFormula: `AND(

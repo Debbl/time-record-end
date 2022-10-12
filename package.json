@@ -16,6 +16,7 @@
     "moment-timezone": "^0.5.37"
   },
   "devDependencies": {
+    "@debbl/eslint-config-prettier": "^0.0.17",
     "@debbl/eslint-config-ts": "^0.0.10",
     "@types/node": "^18.7.23",
     "@typescript-eslint/eslint-plugin": "^5.38.1",

@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@debbl/eslint-config-prettier': ^0.0.17
   '@debbl/eslint-config-ts': ^0.0.10
   '@netlify/functions': ^1.2.0
   '@types/node': ^18.7.23
@@ -22,6 +23,7 @@ dependencies:
   moment-timezone: 0.5.37
 
 devDependencies:
+  '@debbl/eslint-config-prettier': 0.0.17_etxyodoy6exntswrty7fodj65m
   '@debbl/eslint-config-ts': 0.0.10_ypn2ylkkyfa5i233caldtndbqa
   '@types/node': 18.7.23
   '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
@@ -73,6 +75,49 @@ packages:
       eslint-plugin-yml: 1.2.0_eslint@8.24.0
       jsonc-eslint-parser: 2.1.0
       yaml-eslint-parser: 1.1.0
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - supports-color
+    dev: true
+
+  /@debbl/eslint-config-basic/0.0.15_gofx6msuqd4luqedfouzks2s4u:
+    resolution: {integrity: sha512-sVzsjhDS0VN7Vd9ZFYJQ7l8yzAl+PnQY6QJWTcK8kZkL8FBzspYBu685IOWmyA/w8ugReGS5L31UOdjzFIOhTA==}
+    peerDependencies:
+      eslint: ^8.24.0
+    dependencies:
+      eslint: 8.24.0
+      eslint-config-standard: 17.0.0_4ybqc3giaxsbo5btq74wfmkary
+      eslint-plugin-eslint-comments: 3.2.0_eslint@8.24.0
+      eslint-plugin-html: 7.1.0
+      eslint-plugin-import: 2.26.0_gofx6msuqd4luqedfouzks2s4u
+      eslint-plugin-jsonc: 2.4.0_eslint@8.24.0
+      eslint-plugin-markdown: 3.0.0_eslint@8.24.0
+      eslint-plugin-n: 15.3.0_eslint@8.24.0
+      eslint-plugin-promise: 6.0.1_eslint@8.24.0
+      eslint-plugin-unicorn: 43.0.2_eslint@8.24.0
+      eslint-plugin-yml: 1.2.0_eslint@8.24.0
+      jsonc-eslint-parser: 2.1.0
+      yaml-eslint-parser: 1.1.0
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - supports-color
+    dev: true
+
+  /@debbl/eslint-config-prettier/0.0.17_etxyodoy6exntswrty7fodj65m:
+    resolution: {integrity: sha512-U901zkH9X3+0nHGmXu+DqKiodpineWJU/RGQkhZOsS0o46qCXurMdt2Ta2rHueQ/rSZLnC7o4KRnHWf76TG+oQ==}
+    peerDependencies:
+      eslint: ^8.24.0
+      prettier: ^2.7.1
+    dependencies:
+      '@debbl/eslint-config-basic': 0.0.15_gofx6msuqd4luqedfouzks2s4u
+      eslint: 8.24.0
+      eslint-config-prettier: 8.5.0_eslint@8.24.0
+      eslint-plugin-prettier: 4.2.1_cfn5x6ujhhgzv3423d6k7r2zzm
+      prettier: 2.7.1
     transitivePeerDependencies:
       - '@typescript-eslint/parser'
       - eslint-import-resolver-typescript
