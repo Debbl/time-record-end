@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 const SECRET_KET = "Q@*!Lk[-_!38f$T";
 
-function createToken(payload: object | string) {
+function createToken(payload: object) {
   return jwt.sign(payload, SECRET_KET, {
     expiresIn: "30d",
   });

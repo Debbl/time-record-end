@@ -38,7 +38,7 @@ const handler: Handler = async (event) => {
         data: {
           username: record.fields.username,
           password: "",
-          token: createToken(username),
+          token: createToken({ username }),
         },
         map: {},
       });
