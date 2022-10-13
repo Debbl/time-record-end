@@ -1,5 +1,5 @@
 import type { Handler } from "@netlify/functions";
-import { getFormatUserTime, getResult } from "../vika/config";
+import { getFormatUserTime, getResult, passToken } from "../vika/config";
 import vikaGetAllUserWeekTime from "../vika/time/getAllUserWeekTime";
 
 const handler: Handler = async (event) => {
@@ -11,6 +11,17 @@ const handler: Handler = async (event) => {
       msg: "请使用 GET 方法请求",
       data: {},
       map: {},
+    });
+    return result;
+  }
+
+  const isPassToken = await passToken(event);
+  if (!isPassToken) {
+    result.body = JSON.stringify({
+      code: 403,
+      msg: "error",
+      data: null,
+      mpa: {},
     });
     return result;
   }
@@ -30,7 +41,7 @@ const handler: Handler = async (event) => {
   if (response.success) {
     const dataArr = getFormatUserTime(response.data.records);
     dataArr.sort((a, b) => b.totalTimeStampTemp - a.totalTimeStampTemp);
-    const index = dataArr.findIndex(item => item.username === username);
+    const index = dataArr.findIndex((item) => item.username === username);
     let data = {};
     data = {
       ...dataArr[index],

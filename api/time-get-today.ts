@@ -1,6 +1,6 @@
 import type { Handler } from "@netlify/functions";
 import vikaGetToday from "../vika/time/getToday";
-import { getFormatTime, getResult } from "../vika/config";
+import { getFormatTime, getResult, passToken } from "../vika/config";
 
 const handler: Handler = async (event) => {
   const result = getResult();
@@ -11,6 +11,17 @@ const handler: Handler = async (event) => {
       msg: "请使用 GET 方法请求",
       data: {},
       map: {},
+    });
+    return result;
+  }
+
+  const isPassToken = await passToken(event);
+  if (!isPassToken) {
+    result.body = JSON.stringify({
+      code: 403,
+      msg: "error",
+      data: null,
+      mpa: {},
     });
     return result;
   }

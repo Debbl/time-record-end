@@ -2,6 +2,7 @@ import type { Handler } from "@netlify/functions";
 import type { LoginInfo } from "../vika/user/register";
 import vikaLogin from "../vika/user/login";
 import { getResult } from "../vika/config";
+import { createToken } from "../utils/jwt";
 
 const handler: Handler = async (event) => {
   const result = getResult();
@@ -37,6 +38,7 @@ const handler: Handler = async (event) => {
         data: {
           username: record.fields.username,
           password: "",
+          token: createToken(username),
         },
         map: {},
       });
