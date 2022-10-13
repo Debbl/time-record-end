@@ -1,6 +1,8 @@
 import type { IFieldValue, IRecord } from "@vikadata/vika";
 import { Vika } from "@vikadata/vika";
 import type { Response } from "@netlify/functions/dist/function/response";
+import type { Event } from "@netlify/functions/dist/function/event";
+import { verifyToken } from "../utils/jwt";
 
 const vika = new Vika({ token: process.env.VIKA_TOKEN });
 
@@ -14,12 +16,27 @@ const getResult = (): Response => ({
   },
 });
 
+const passToken = async (event: Event) => {
+  const { authorization } = event.headers;
+  if (!authorization) return false;
+  const [, token] = authorization.split(" ");
+  try {
+    await verifyToken(token);
+  } catch (error) {
+    return false;
+  }
+  return true;
+};
+
 const getFormatTime = (totalTimeStamp: number) => {
   const timeArr = ["00", "00", "00"];
   let totalTimeStampTemp = Math.floor(totalTimeStamp / 1000);
   let flag = 2;
   while (totalTimeStampTemp > 0) {
-    timeArr[flag--] = String(Math.floor(totalTimeStampTemp % 60)).padStart(2, "0");
+    timeArr[flag--] = String(Math.floor(totalTimeStampTemp % 60)).padStart(
+      2,
+      "0"
+    );
     totalTimeStampTemp = Math.floor(totalTimeStampTemp / 60);
   }
   return timeArr.join(":");
@@ -32,7 +49,11 @@ const getFormatUserTime = (records: IRecord[]) => {
     const stamp = record.fields.timeStamp;
     map.set(username, (map.get(username) || 0) + Number(stamp));
   }
-  const data: { username: IFieldValue; time: string; totalTimeStampTemp: number }[] = [];
+  const data: {
+    username: IFieldValue;
+    time: string;
+    totalTimeStampTemp: number;
+  }[] = [];
   for (const [key, value] of map) {
     data.push({
       username: key,
@@ -43,4 +64,4 @@ const getFormatUserTime = (records: IRecord[]) => {
   return data;
 };
 
-export { vika, getResult, getFormatTime, getFormatUserTime };
+export { vika, getResult, getFormatTime, getFormatUserTime, passToken };

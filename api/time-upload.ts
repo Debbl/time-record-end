@@ -1,7 +1,7 @@
 import type { Handler } from "@netlify/functions";
 import type { Info } from "../vika/time/upload";
 import vikaUpload from "../vika/time/upload";
-import { getResult } from "../vika/config";
+import { getResult, passToken } from "../vika/config";
 
 const handler: Handler = async (event) => {
   const result = getResult();
@@ -16,13 +16,24 @@ const handler: Handler = async (event) => {
     return result;
   }
 
+  const isPassToken = await passToken(event);
+  if (!isPassToken) {
+    result.body = JSON.stringify({
+      code: 403,
+      msg: "error",
+      data: null,
+      mpa: {},
+    });
+    return result;
+  }
+
   const info: Info = JSON.parse(event.body) as Info;
   if (
-    !info.username
-    || !info.startTime
-    || !info.endTime
-    || !info.time
-    || !info.timeStamp
+    !info.username ||
+    !info.startTime ||
+    !info.endTime ||
+    !info.time ||
+    !info.timeStamp
   ) {
     result.body = JSON.stringify({
       code: 200,
