@@ -19,8 +19,9 @@ const getResult = (): Response => ({
 const passToken = async (event: Event) => {
   const { authorization } = event.headers;
   if (!authorization) return false;
+  const [, token] = authorization.split(" ");
   try {
-    await verifyToken(authorization);
+    await verifyToken(token);
   } catch (error) {
     return false;
   }

@@ -14,14 +14,6 @@ const handler: Handler = async (event) => {
     });
     return result;
   }
-  result.body = JSON.stringify({
-    code: 200,
-    msg: null,
-    data: event,
-    rank: 0,
-    map: {},
-  });
-  return result;
 
   const isPassToken = await passToken(event);
   if (!isPassToken) {
