@@ -12,10 +12,12 @@
   "dependencies": {
     "@netlify/functions": "^1.2.0",
     "@vikadata/vika": "^1.0.7",
+    "crypto-js": "^4.1.1",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.37"
   },
   "devDependencies": {
+    "@debbl/eslint-config-prettier": "^0.0.17",
     "@debbl/eslint-config-ts": "^0.0.10",
     "@types/node": "^18.7.23",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
