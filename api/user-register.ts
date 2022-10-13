@@ -2,6 +2,7 @@ import type { Handler } from "@netlify/functions";
 import type { LoginInfo } from "../vika/user/register";
 import vikaRegister from "../vika/user/register";
 import { getResult } from "../vika/config";
+import { genPassword } from "../utils/crypto";
 
 const handler: Handler = async (event) => {
   const result = getResult();
@@ -28,7 +29,10 @@ const handler: Handler = async (event) => {
     return result;
   }
 
-  const response = await vikaRegister({ username, password });
+  const response = await vikaRegister({
+    username,
+    password: genPassword(password),
+  });
   // 用户已存在
   if (!response) {
     result.body = JSON.stringify({
