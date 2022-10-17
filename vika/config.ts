@@ -6,6 +6,7 @@ import * as dotenv from "dotenv";
 import { verifyToken } from "../utils/jwt";
 dotenv.config({
   path: "../.env",
+  override: true,
 });
 
 const vika = new Vika({ token: process.env.VIKA_TOKEN });
