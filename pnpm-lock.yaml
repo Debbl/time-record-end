@@ -10,6 +10,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.38.1
   '@vikadata/vika': ^1.0.7
   crypto-js: ^4.1.1
+  dotenv: ^16.0.3
   eslint: ^8.24.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-prettier: ^4.2.1
@@ -22,8 +23,8 @@ specifiers:
 dependencies:
   '@netlify/functions': 1.2.0
   '@vikadata/vika': 1.0.7
-  jsonwebtoken: 8.5.1
   crypto-js: 4.1.1
+  jsonwebtoken: 8.5.1
   moment: 2.29.4
   moment-timezone: 0.5.37
 
@@ -34,6 +35,7 @@ devDependencies:
   '@types/node': 18.7.23
   '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
   '@typescript-eslint/parser': 5.38.1_ypn2ylkkyfa5i233caldtndbqa
+  dotenv: 16.0.3
   eslint: 8.24.0
   eslint-config-prettier: 8.5.0_eslint@8.24.0
   eslint-plugin-prettier: 4.2.1_cfn5x6ujhhgzv3423d6k7r2zzm
@@ -730,6 +732,11 @@ packages:
       dom-serializer: 2.0.0
       domelementtype: 2.3.0
       domhandler: 5.0.3
+    dev: true
+
+  /dotenv/16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
     dev: true
 
   /ecdsa-sig-formatter/1.0.11:

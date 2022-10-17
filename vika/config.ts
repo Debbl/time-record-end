@@ -2,7 +2,11 @@ import type { IFieldValue, IRecord } from "@vikadata/vika";
 import { Vika } from "@vikadata/vika";
 import type { Response } from "@netlify/functions/dist/function/response";
 import type { Event } from "@netlify/functions/dist/function/event";
+import * as dotenv from "dotenv";
 import { verifyToken } from "../utils/jwt";
+dotenv.config({
+  path: "../.env",
+});
 
 const vika = new Vika({ token: process.env.VIKA_TOKEN });
 
