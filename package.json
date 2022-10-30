@@ -7,18 +7,19 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node index.ts",
+    "dev": "ts-node-dev index.ts",
     "build": "netlify-lambda build src"
   },
   "dependencies": {
+    "@koa/router": "^12.0.0",
     "@netlify/functions": "^1.2.0",
-    "koa": "^2.13.4",
-    "serverless-http": "^3.1.0"
+    "koa": "^2.13.4"
   },
   "devDependencies": {
     "@debbl/eslint-config-prettier": "^0.0.17",
     "@debbl/eslint-config-ts": "^0.0.10",
     "@types/koa": "^2.13.5",
+    "@types/koa__router": "^12.0.0",
     "@types/node": "^18.7.23",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
@@ -26,6 +27,7 @@
     "eslint": "^8.24.0",
     "netlify-lambda": "^2.0.15",
     "prettier": "^2.7.1",
+    "serverless-http": "^3.1.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.8.4"
   }

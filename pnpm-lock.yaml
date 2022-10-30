@@ -3,8 +3,10 @@ lockfileVersion: 5.4
 specifiers:
   '@debbl/eslint-config-prettier': ^0.0.17
   '@debbl/eslint-config-ts': ^0.0.10
+  '@koa/router': ^12.0.0
   '@netlify/functions': ^1.2.0
   '@types/koa': ^2.13.5
+  '@types/koa__router': ^12.0.0
   '@types/node': ^18.7.23
   '@typescript-eslint/eslint-plugin': ^5.38.1
   '@typescript-eslint/parser': ^5.38.1
@@ -18,14 +20,15 @@ specifiers:
   typescript: ^4.8.4
 
 dependencies:
+  '@koa/router': 12.0.0
   '@netlify/functions': 1.2.0
   koa: 2.13.4
-  serverless-http: 3.1.0
 
 devDependencies:
   '@debbl/eslint-config-prettier': 0.0.17_etxyodoy6exntswrty7fodj65m
   '@debbl/eslint-config-ts': 0.0.10_ypn2ylkkyfa5i233caldtndbqa
   '@types/koa': 2.13.5
+  '@types/koa__router': 12.0.0
   '@types/node': 18.7.23
   '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
   '@typescript-eslint/parser': 5.38.1_ypn2ylkkyfa5i233caldtndbqa
@@ -33,6 +36,7 @@ devDependencies:
   eslint: 8.24.0
   netlify-lambda: 2.0.15
   prettier: 2.7.1
+  serverless-http: 3.1.0
   ts-node-dev: 2.0.0_gbhfbbeqrol7fxixnzbkbuanxe
   typescript: 4.8.4
 
@@ -1370,6 +1374,16 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@koa/router/12.0.0:
+    resolution: {integrity: sha512-cnnxeKHXlt7XARJptflGURdJaO+ITpNkOHmQu7NHmCoRinPbyvFzce/EG/E8Zy81yQ1W9MoSdtklc3nyaDReUw==}
+    engines: {node: '>= 12'}
+    dependencies:
+      http-errors: 2.0.0
+      koa-compose: 4.1.0
+      methods: 1.1.2
+      path-to-regexp: 6.2.1
+    dev: false
+
   /@netlify/functions/1.2.0:
     resolution: {integrity: sha512-zCOJPoZQLv4ISHjyBS7asqzR6Y9NU+Vb0VKYDD0xUwYmReMhLTDchjGMkt5x0Jk1EVnJwUvA29rGyQEj3tIgAA==}
     engines: {node: '>=8.3.0'}
@@ -1500,6 +1514,12 @@ packages:
       '@types/keygrip': 1.0.2
       '@types/koa-compose': 3.2.5
       '@types/node': 18.7.23
+    dev: true
+
+  /@types/koa__router/12.0.0:
+    resolution: {integrity: sha512-S6eHyZyoWCZLNHyy8j0sMW85cPrpByCbGGU2/BO4IzGiI87aHJ92lZh4E9xfsM9DcbCT469/OIqyC0sSJXSIBQ==}
+    dependencies:
+      '@types/koa': 2.13.5
     dev: true
 
   /@types/mdast/3.0.10:
@@ -3844,7 +3864,6 @@ packages:
       setprototypeof: 1.2.0
       statuses: 2.0.1
       toidentifier: 1.0.1
-    dev: true
 
   /https-browserify/1.0.0:
     resolution: {integrity: sha512-J+FkSdyD+0mA0N+81tMotaRMfSL9SGi+xpD3T6YApKsc3bGSXJlfXri3VyFOeYkfLRQisDk1W+jIFFKBeUBbBg==}
@@ -4500,7 +4519,6 @@ packages:
   /methods/1.1.2:
     resolution: {integrity: sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==}
     engines: {node: '>= 0.6'}
-    dev: true
 
   /micromark/2.11.4:
     resolution: {integrity: sha512-+WoovN/ppKolQOFIAajxi7Lu9kInbPxFuTBVEavFcL8eAfVstoc5MocPmqBeAdBOJV00uaVjegzH4+MA0DN/uA==}
@@ -4991,6 +5009,10 @@ packages:
   /path-to-regexp/0.1.7:
     resolution: {integrity: sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ==}
     dev: true
+
+  /path-to-regexp/6.2.1:
+    resolution: {integrity: sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==}
+    dev: false
 
   /path-type/4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
@@ -5508,7 +5530,7 @@ packages:
   /serverless-http/3.1.0:
     resolution: {integrity: sha512-CwWO34otWjwJ3+meUlFoEhCOiEEpGDT/xnaZ835iMwF0PEL2GoMJMBRed6tUXYtrLAj4tTgkF6wiUbaJQyaEpw==}
     engines: {node: '>=12.0'}
-    dev: false
+    dev: true
 
   /set-value/2.0.1:
     resolution: {integrity: sha512-JxHc1weCN68wRY0fhCoXpyK55m/XPHafOmK4UWD7m2CI14GMcFypt4w/0+NV5f/ZMby2F6S2wwA7fgynh9gWSw==}
@@ -5680,7 +5702,6 @@ packages:
   /statuses/2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
-    dev: true
 
   /stream-browserify/2.0.2:
     resolution: {integrity: sha512-nX6hmklHs/gr2FuxYDltq8fJA1GDlxKQCz8O/IM4atRqBH8OORmBNgfvW5gG10GT/qQ9u0CzIvr2X5Pkt6ntqg==}

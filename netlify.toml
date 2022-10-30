@@ -1,6 +1,6 @@
 [build]
   command = "npx pnpm install --store=node_modules/.pnpm-store && npx pnpm build"
-  functions = "funcions" #  netlify-lambda reads this
+  functions = "functions" #  netlify-lambda reads this
 
 [functions]
   directory = "funcions"
