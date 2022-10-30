@@ -2,10 +2,5 @@
   command = "npx pnpm install --store=node_modules/.pnpm-store && npx pnpm build"
   functions = "funcions" #  netlify-lambda reads this
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Content-Type = "application/json"
-    Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Headers = "*"
-    Access-Control-Allow-Methods = "*"
+[functions]
+  directory = "funcions"
