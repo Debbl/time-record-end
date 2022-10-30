@@ -7,20 +7,24 @@
   "keywords": [],
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node index.ts",
+    "build": "netlify-lambda build src"
   },
   "dependencies": {
     "@netlify/functions": "^1.2.0",
     "@vikadata/vika": "^1.0.7",
     "crypto-js": "^4.1.1",
     "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.4",
     "moment": "^2.29.4",
-    "moment-timezone": "^0.5.37"
+    "moment-timezone": "^0.5.37",
+    "serverless-http": "^3.1.0"
   },
   "devDependencies": {
     "@debbl/eslint-config-prettier": "^0.0.17",
     "@debbl/eslint-config-ts": "^0.0.10",
     "@types/jsonwebtoken": "^8.5.9",
+    "@types/koa": "^2.13.5",
     "@types/node": "^18.7.23",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
@@ -28,7 +32,9 @@
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "netlify-lambda": "^2.0.15",
     "prettier": "^2.7.1",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^4.8.4"
   }
 }

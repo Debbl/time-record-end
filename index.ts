@@ -1,10 +1,6 @@
-import moment from "moment-timezone";
-moment.updateLocale("zh-cn", {
-  week: {
-    dow: 1,
-  },
+import app from "./src/main";
+const port = 3000;
+
+app.listen(port, () => {
+  console.log(`http://127.0.0.1:${port}`);
 });
-
-moment.tz.setDefault("Asia/Shanghai");
-
-export default moment;

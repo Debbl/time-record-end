@@ -1,55 +1,7 @@
-[functions]
-  directory = "api"
-
-[[redirects]]
-  from = "/user/login"
-  to = "/.netlify/functions/user-login"
-  status = 200
-
-[[redirects]]
-  from = "/user/register"
-  to = "/.netlify/functions/user-register"
-  status = 200
-
-[[redirects]]
-  from = "/time/upload"
-  to = "/.netlify/functions/time-upload"
-  status = 200
-
-[[redirects]]
-  from = "/time/getToday"
-  to = "/.netlify/functions/time-get-today"
-  status = 200
-
-[[redirects]]
-  from = "time/getUserToday"
-  to = "/.netlify/functions/time-get-user-today"
-  status = 200
-
-[[redirects]]
-  from = "time/getUserTodayInterval"
-  to = "/.netlify/functions/time-get-user-today-interval"
-  status = 200
-
-[[redirects]]
-  from = "/time/getWeek"
-  to = "/.netlify/functions/time-get-week"
-  status = 200
-
-[[redirects]]
-  from = "/time/getUserWeek"
-  to = "/.netlify/functions/time-get-user-week"
-  status = 200
-
-[[redirects]]
-  from = "time/getAllUserWeekTime"
-  to = "/.netlify/functions/time-get-all-user-week-time"
-  status = 200
-
-[[redirects]]
-  from = "time/getAllUserMonthTime"
-  to = "/.netlify/functions/time-get-all-user-month-time"
-  status = 200
+[build]
+  command = "npx pnpm install --store=node_modules/.pnpm-store && npx pnpm build"
+  functions = "funcions" #  netlify-lambda reads this
+  publish = "build"
 
 [[headers]]
   for = "/*"
