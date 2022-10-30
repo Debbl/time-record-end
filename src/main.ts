@@ -10,4 +10,5 @@ app.use(async (ctx) => {
   };
 });
 
-module.exports.handler = serverless(app);
+const handler = serverless(app);
+export { handler };
