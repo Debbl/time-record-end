@@ -1,4 +1,3 @@
-import type { Context, Next } from "koa";
 import Koa from "koa";
 import serverless from "serverless-http";
 import bodyParser from "koa-bodyparser";
