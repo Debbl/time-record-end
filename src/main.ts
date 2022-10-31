@@ -8,9 +8,6 @@ import userRouter from "./router/user.router";
 const app = new Koa();
 
 app.use(bodyParser());
-app.use(async (ctx: Context, next: Next) => {
-  await next();
-});
 app.use(userRouter.routes());
 app.on("error", errorHandler);
 
