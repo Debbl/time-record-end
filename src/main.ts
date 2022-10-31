@@ -1,7 +1,7 @@
 import Koa from "koa";
 import serverless from "serverless-http";
 import bodyParser from "koa-bodyparser";
-import { errorHandler } from "../config";
+import { errorHandler } from "./config/config";
 import userRouter from "./router/user.router";
 
 const app = new Koa();

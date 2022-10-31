@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
-import type { Context } from "koa";
+// import type { Context } from "koa";
 
 dotenv.config({
-  path: "./.env",
+  path: "../.env",
   override: true,
 });
 
@@ -12,7 +12,7 @@ const USER_DATA_SHEET = "dstf2Lur3r2D7Zpz0v";
 const NAME_OR_PASSWORD_IS_REQUIRED = "name_or_password_is_required";
 const USER_INFO_ERROR = "user_info_error";
 
-const errorHandler = (error: Error, ctx: Context) => {
+const errorHandler = (error: Error, ctx: any) => {
   let status: number;
   let message: string;
   switch (error.message) {

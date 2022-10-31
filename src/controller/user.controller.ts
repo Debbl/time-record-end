@@ -1,7 +1,10 @@
 import type { Context } from "koa";
 import type { IFieldValueMap } from "@vikadata/vika";
 import userService from "../services/user.service";
-import { NAME_OR_PASSWORD_IS_REQUIRED, USER_INFO_ERROR } from "../../config";
+import {
+  NAME_OR_PASSWORD_IS_REQUIRED,
+  USER_INFO_ERROR,
+} from "../config/config";
 
 export interface LoginInfo extends IFieldValueMap {
   username: string;

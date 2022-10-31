@@ -1,5 +1,5 @@
 import type { Datasheet } from "@vikadata/vika/es/datasheet";
-import { USER_DATA_SHEET } from "../../config";
+import { USER_DATA_SHEET } from "../config/config";
 import vika from "./vika";
 
 class UserService {
