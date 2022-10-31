@@ -10,6 +10,6 @@
     "lib": ["ESNext", "DOM"],
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src", "src/config/config.ts", "src/config/config.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
