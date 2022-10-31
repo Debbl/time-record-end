@@ -6,7 +6,6 @@ dotenv.config({
 });
 
 const VIKA_TOKEN = process.env.VIKA_TOKEN;
-console.log(VIKA_TOKEN);
 
 const USER_DATA_SHEET = "dstf2Lur3r2D7Zpz0v";
 

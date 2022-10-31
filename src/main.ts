@@ -1,3 +1,4 @@
+// import type { Context, Next } from "koa";
 import Koa from "koa";
 import serverless from "serverless-http";
 import bodyParser from "koa-bodyparser";
@@ -7,6 +8,12 @@ import userRouter from "./router/user.router";
 const app = new Koa();
 
 app.use(bodyParser());
+/* app.use(async (ctx: Context, next: Next) => {
+  ctx.body = {
+    aaa: "OK",
+  };
+  await next();
+}); */
 app.use(userRouter.routes());
 app.on("error", errorHandler);
 
